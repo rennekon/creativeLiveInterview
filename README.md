@@ -5,7 +5,9 @@ Hey CreativeLive team!
 
 Thanks for taking the time to check out this project.
 
-tl;dr 'npm install' and start the server with 'node server.js'
+tl;dr 'npm install' and start the server with 'node server.js
+
+=====================
 
 I approached this project in a couple phases. 
 
@@ -15,4 +17,6 @@ After organizing the static display view, I moved onto data modification. For th
 
 The original POST /{band} route would overwrite the stored data for {band} with whatever had been posted up from the form. Since {band} was tied to the mutable band-name, the route fires back a redirect to the new band-name url.  In reality this could all be handled without redirecting by adding in a framework like backbone, angular, etc. or doing the xhr requests ourselves.
 
-Once that was all up and running, I added session support using shortId. When a user visits the site, they are assigned a unique identifier. If they make changes to a band, the default values + their changed band are stored using that unique identifier. New browsers get new unique values, and the values persist for a month [the ttl of the cookie] or until the server restarts and the stored data is lost
+Once that was all up and running, I added session support. When a user visits the site, they are assigned a unique identifier. If they make changes to a band, the default values + their changed band are stored using that unique identifier. New browsers get new unique values, and the values persist for a month [the ttl of the cookie] or until the server restarts and the stored data is lost.
+
+I used pure bootstrap for the UI, shortId for the unique ids, and lodash for some general nice js funcs.
