@@ -27,7 +27,7 @@ The original POST /{band} route would overwrite the stored data for {band} with 
 
 =====================
 
-Once that was all up and running, I added session support. When a user visits the site, they are assigned a unique identifier. If they make changes to a band, the default values + their changed band values are stored using that unique identifier. New browsers get new unique values, and the values persist for a month [the ttl of the cookie] or until the server restarts and the stored data is lost.
+Once that was all up and running, I added session support. When a user visits the site, they are assigned a unique identifier. If they make changes to a band, their changed band values are stored using that unique identifier, with the default values being cloned if it's their first modification. New browsers get new unique values, and the values persist for a month [the ttl of the cookie] or until the server restarts and the stored data is lost.
 
 =====================
 
