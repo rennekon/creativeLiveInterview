@@ -1,0 +1,59 @@
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"></link>
+	</head>
+	<body>
+		<div id="siteWrapper" class="container col-sm-12">
+			<h3 class="col-sm-offset-2">Hello CreativeLive!</h3>
+			<hr>
+			<div id="bandList" class="btn-group-vertical col-sm-3 col-sm-offset-2">
+				<% for (bandName in params.bands) { %>
+					<button class="btn btn-default" type="button">
+						<a href='<%= bandName %>'><%= bandName %></a>
+					</button>
+				<% } %>
+			</div>
+			<div id="bandDetail" class="col-sm-5">
+				<% if (params.band) { %>
+					<form method="POST" action="/<%= params.band %>" class="form-horizontal">
+						<div class="form-group">
+							<% var band = params.bands[params.band]; %>
+							<% if (!band) { %>
+								Invalid band data.
+							<% } else { %>
+								<div class="form-group">
+									<label class="col-sm-3 control-label">Name:</label>
+									<div class="col-sm-9">
+										<input type="text" name="name" class="form-control" value="<%= band.name %>">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3 control-label">Formed:</label>
+									<div class="col-sm-9">
+										<input type="text" name="year_formed" class="form-control" value="<%= band.year_formed %>">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3 control-label">Members:</label>
+									<div class="col-sm-9">
+										<% for (i in band.members) { %>
+											<input type="text" name="members[<%= i %>][name]" class="form-control" value='<%= band.members[i].name %>'></input>
+										<% } %>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-sm-offset-3 col-sm-10">
+										<button type="submit" class="btn btn-default">Update</button>
+									</div>
+								</div>
+								<!-- <input type="hidden" name="method" value="PUT"> -->
+								<input type="hidden" name="originalName" value="<%= band.name %>">
+							<% } %>
+						</div>
+					</form>
+				<% } %>
+			</div>
+		</div>
+	</body>
+</html
