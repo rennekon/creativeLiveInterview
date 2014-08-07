@@ -79,7 +79,7 @@ server.route({
 
 // Helper function to fetch an existing session value or create a new one
 function getSession(req) {
-	return req.state ? req.state.session : shortId.generate();
+	return req.state && req.state.session !== '' ? req.state.session : shortId.generate()
 }
 
 server.start(function() {
